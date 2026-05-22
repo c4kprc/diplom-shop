@@ -1,0 +1,12 @@
+// Адаптация под мобилки
+@media (max-width: 768px) {
+  .col-3 {
+    width: 50% !important;  // на телефоне по 2 товара в ряд
+  }
+}
+
+@media (max-width: 480px) {
+  .col-3 {
+    width: 100% !important;  // на очень маленьких по 1 товару
+  }
+}
