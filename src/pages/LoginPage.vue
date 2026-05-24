@@ -1,4 +1,3 @@
-<!-- src/pages/LoginPage.vue -->
 <template>
   <div class="row flex-center" style="min-height: 100vh; background: #f5f5f5;">
     <div class="col-12 col-sm-6 col-md-4">
@@ -86,7 +85,7 @@ async function handleLogin() {
       position: 'top',
       timeout: 5000
     })
-    email.value = '' // Очищаем поле
+    email.value = ''
   } catch (error) {
     console.error('Login error:', error)
     

@@ -16,14 +16,12 @@ const routes = [
       {
         path: '',
         name: 'catalog',
-        component: () => import('pages/CatalogPage.vue'),
-        meta: { requiresAuth: true }
+        component: () => import('pages/CatalogPage.vue')
       },
       {
         path: 'product/:id',
         name: 'product',
-        component: () => import('pages/ProductPage.vue'),
-        meta: { requiresAuth: true }
+        component: () => import('pages/ProductPage.vue')
       },
       {
         path: 'profile',
@@ -38,7 +36,7 @@ const routes = [
         meta: { requiresAuth: true }
       },
       {
-        path: 'favorites',  // 👈 ДОБАВИТЬ ЭТО
+        path: 'favorites',
         name: 'favorites',
         component: () => import('pages/FavoritesPage.vue'),
         meta: { requiresAuth: true }

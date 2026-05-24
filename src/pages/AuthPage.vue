@@ -1,10 +1,7 @@
 <template>
   <div class="row flex-center" style="min-height: 100vh; background: #f5f5f5;">
     <div class="text-center">
-      <q-spinner
-        color="primary"
-        size="50px"
-      />
+      <q-spinner size="50px" color="primary" />
       <div class="q-mt-md text-subtitle1">
         {{ message }}
       </div>
@@ -25,7 +22,6 @@ const message = ref('Выполняется вход...')
 
 onMounted(async () => {
   try {
-    // Обновляем сессию после возврата из письма
     const success = await authStore.refreshSession()
     
     if (success && authStore.isAuthenticated) {
@@ -36,7 +32,6 @@ onMounted(async () => {
         position: 'top'
       })
       
-      // Небольшая задержка для красоты
       setTimeout(() => {
         router.push('/catalog')
       }, 500)

@@ -15,7 +15,11 @@
     <div v-else class="row q-col-gutter-md">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="fav in favoritesList" :key="fav.id">
         <q-card>
-          <q-img :src="fav.products?.image" style="height: 200px; width: 100%; object-fit: cover" @click="goToProduct(fav.product_id)" />
+          <q-img 
+            :src="fav.products?.image" 
+            style="height: 200px; width: 100%; object-fit: cover" 
+            @click="goToProduct(fav.product_id)" 
+          />
           <q-card-section @click="goToProduct(fav.product_id)" style="cursor: pointer">
             <div class="text-subtitle1 text-weight-bold">{{ fav.products?.title }}</div>
             <div class="text-caption text-grey">{{ fav.products?.description?.slice(0, 60) }}...</div>
@@ -77,7 +81,11 @@ async function removeFavorite(productId) {
   $q.notify({ type: 'positive', message: 'Удалено из избранного' })
 }
 
-function goToProduct(productId) { router.push(`/product/${productId}`) }
-function goToCatalog() { router.push('/catalog') }
-</script>
+function goToProduct(productId) { 
+  router.push(`/product/${productId}`) 
+}
+
+function goToCatalog() { 
+  router.push('/catalog') 
+}
 </script>

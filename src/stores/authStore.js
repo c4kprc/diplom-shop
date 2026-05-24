@@ -1,6 +1,6 @@
 // src/stores/authStore.js
 import { defineStore } from 'pinia'
-import { supabase } from 'src/boot/supabase'
+import { supabase } from 'boot/supabase'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -16,11 +16,9 @@ export const useAuthStore = defineStore('auth', {
   },
 
   actions: {
-    // Инициализация при старте приложения
     async initAuth() {
       this.loading = true
       
-      // Получаем текущую сессию из localStorage
       const { data: { session }, error } = await supabase.auth.getSession()
       
       if (error) {
@@ -34,7 +32,6 @@ export const useAuthStore = defineStore('auth', {
       
       this.loading = false
       
-      // Подписываемся на изменения авторизации (важно для синхронизации между вкладками)
       supabase.auth.onAuthStateChange((_event, session) => {
         this.session = session
         this.user = session?.user ?? null
@@ -42,7 +39,7 @@ export const useAuthStore = defineStore('auth', {
       })
     },
 
-    // Вход через магическую ссылку
+    // МАГИЧЕСКАЯ ССЫЛКА
     async signInWithMagicLink(email) {
       const { error } = await supabase.auth.signInWithOtp({
         email,
@@ -54,7 +51,6 @@ export const useAuthStore = defineStore('auth', {
       if (error) throw error
     },
 
-    // Выход
     async signOut() {
       const { error } = await supabase.auth.signOut()
       if (error) throw error
@@ -63,7 +59,6 @@ export const useAuthStore = defineStore('auth', {
       this.session = null
     },
 
-    // Обновить сессию вручную (для callback страницы)
     async refreshSession() {
       const { data: { session }, error } = await supabase.auth.getSession()
       
